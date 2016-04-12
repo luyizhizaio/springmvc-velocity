@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FINDWAY管理系统</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="http://www.360buy.com/favicon.ico" rel="shortcut icon">
+
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/bootstrap-responsive.min.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/select2.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/ec.main.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/bootstrap-datetimepicker.min.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/unicorn.main.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/unicorn.grey.css" class="skin-color" />
+
+    <script type="text/javascript" src="/static/scripts/bootstrap/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/jquery.ui.custom.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/select2.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/jquery.validate.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/unicorn.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/ec.modal.page.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/ec.log.index.page.js"></script>
+</head>
+<body>
+
+    #* 头部logo *#
+    <div id="header">
+        <h1><a href="/ec/list">FINDAWAY System</a></h1>
+    </div>
+
+    #* 头部功能区 *#
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav btn-group">
+            <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">Profile</span></a></li>
+            <li class="btn btn-inverse"><a title="" href="/login/logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+        </ul>
+    </div>
+
+    #* 左侧菜单栏 *#
+    <div id="sidebar">
+        <a href="#" class="visible-phone"><i class="icon icon-home"></i> 错误码系统</a>
+        <ul>
+            <li>
+                <a href="/ec/list"><i class="icon icon-home"></i> <span>错误码管理</span></a>
+            </li>
+            <li>
+                <a href="/group/list"><i class="icon icon-user"></i> <span>分组管理</span></a>
+            </li>
+            <li class="submenu">
+                <a href="#"><i class="icon icon-cog"></i> <span>系统设置</span> <span class="label">2</span></a>
+                <ul>
+                    <li><a href="/sys/index">缓存管理</a></li>
+                    <li><a href="#">其他</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="/log/index"><i class="icon icon-file"></i> <span>日志管理</span></a>
+            </li>
+        </ul>
+    </div>
+
+    #* 右侧主区 *#
+    <div id="content">
+        #* 页面标题及功能区 *#
+        <div id="content-header">
+            <div class="btn-group">
+                <a class="btn btn-large tip-bottom" title="刷 新"><i class="icon-refresh"></i></a>
+                <a href="/group/add" class="btn btn-large tip-bottom" title="添加分组"><i class="icon-plus-sign"></i></a>
+                <a href="/ec/add" class="btn btn-large tip-bottom" title="添加错误码"><i class="icon-plus"></i></a>
+                <a href="/ec/list" class="btn btn-large tip-bottom" title="错误码列表"><i class="icon-th-list"></i><span
+                        class="label label-important">${length}</span></a>
+            </div>
+        </div>
+
+        #* 面包屑 *#
+        <div id="breadcrumb">
+            <a href="#" class="tip-bottom"><i class="icon-home"></i> Home</a>
+            <a href="#" class="current">日志管理</a>
+        </div>
+
+        #* 表单 *#
+        <div id="main" class="container-fluid" >
+
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget-box">
+                        <div class="widget-title">
+								<span class="icon">
+									<i class="icon-list-alt"></i>
+								</span>
+                            <h5>检索条件</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+
+                            <form id="searchForm" action="#" method="get" class="form-horizontal" />
+                                <div class="control-group">
+                                    <div class="controls" style="float:left;margin:0.25% 0 0 2.5%;">Pin：</div>
+                                    <div class="controls" style="float:left;margin:0 0 0 1.5%;">
+                                        <input type="text" id="pin" style="width: auto"/>
+                                    </div>
+                                    <div class="controls" style="float:left;margin:0.25% 0 0 2.5%;">Start-Stop Time：</div>
+                                    <div class="controls" style="float:left;margin:0 0 0 1.5%;">
+                                        <input type="text" id="startTime" style="width: auto" /> -
+                                        <input type="text" id="stopTime" style="width: auto" />
+                                    </div>
+                                    <div class="controls" style="float:left;margin:0.25% 0 0 2.5%;">Code：</div>
+                                    <div class="controls" style="float:left;margin:0 0 0 1.5%;">
+                                        <input type="text" id="code" style="width: auto"/>
+                                    </div>
+                                    <div class="controls" style="float:left;margin:0.25% 0 0 2.5%;">Out Code：</div>
+                                    <div class="controls" style="float:left;margin:0 0 0 1.5%;">
+                                        <input type="text" id="outCode" style="width: auto"/>
+                                    </div>
+                                    <div class="controls" style="float:left;margin:0 0 0 5%;">
+                                        <button class="btn btn-inverse" id="searchBtn"><i class="icon-search icon-white"></i> Search</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <div id="tip" class="alert alert-error" style="display: none">
+                        <button class="close" data-dismiss="alert">×</button>
+                         错误码数据为空！
+                    </div>
+
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <span class="icon">
+									<i class="icon-list"></i>
+								</span>
+                            <h5>日志信息</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <table class="table table-bordered table-striped with-check">
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="title-table-checkbox" name="title-table-checkbox" /></th>
+                                    <th>Pin</th>
+                                    <th>Create Time</th>
+                                    <th>Code</th>
+                                    <th>Msg</th>
+                                    <th>Out Code</th>
+                                    <th>Out Msg</th>
+                                </tr>
+                                </thead>
+                                <tfoot id="page">
+                                <tr>
+                                    <th class="total-label" colspan="7">
+                                        <div class="pagination alternate">
+                                            <div class="page-button" >
+                                                <ul id="pageList">
+                                                </ul>
+                                            </div>
+                                            <div class="page-label">
+                                                <h7>&nbsp;&nbsp;每页</h7>
+                                                <span><select id="pageSize">
+                                                    <option value="10"/>
+                                                    10
+                                                    <option value="25"/>
+                                                    25
+                                                    <option value="50"/>
+                                                    50
+                                                    <option value="100"/>
+                                                    100
+                                                </select><input type="hidden" id="currentNum" /></span>
+                                                <h7>条，共 <span id="totalNum"></span> 条</h7>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </tfoot>
+                                <tbody id="data">
+                                    <tr>
+                                        <td colspan="7">
+                                            <span>No matching records found</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            #* 撑页面 *#
+            <div id="autoHeight" class="row-fluid">
+            </div>
+
+            #* 页底 *#
+            <div class="row-fluid">
+                <div id="footer" class="span12">
+                    Copyright &copy; 2015 FINDAWAY 版权所有
+                </div>
+            </div>
+
+            #* 提示框 *#
+            <div id="modal" class="modal hide fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"> [Close]</span></button>
+                            <h5 class="modal-title"><i class="fa fa-exclamation-circle"></i> [Title]</h5>
+                        </div>
+                        <div class="modal-body small">
+                            <p>[Message]</p>
+                        </div>
+                        <div class="modal-footer" >
+                            <button type="button" class="btn btn-primary ok" data-dismiss="modal">[BtnOk]</button>
+                            <button type="button" class="btn btn-default cancel" data-dismiss="modal">[BtnCancel]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

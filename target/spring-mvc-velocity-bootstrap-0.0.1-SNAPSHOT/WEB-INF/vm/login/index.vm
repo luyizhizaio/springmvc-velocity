@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FINDAWAY管理系统</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="http://www.360buy.com/favicon.ico" rel="shortcut icon">
+
+		<link type="text/css" rel="stylesheet" href="/static/styles/css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="/static/styles/css/bootstrap-responsive.min.css" />
+        <link type="text/css" rel="stylesheet" href="/static/styles/css/unicorn.login.css" />
+
+        <script type="text/javascript" src="/static/scripts/bootstrap/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/scripts/bootstrap/jquery.ui.custom.js"></script>
+        <script type="text/javascript" src="/static/scripts/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/static/scripts/bootstrap/jquery.validate.js"></script>
+        <script type="text/javascript" src="/static/scripts/bootstrap/ec.modal.page.js"></script>
+        <script type="text/javascript" src="/static/scripts/bootstrap/ec.login.js"></script>
+    </head>
+    <body>
+        <div id="logo">
+            <img src="/static/styles/img/logo.png" alt="" />
+        </div>
+        <div id="loginbox" >
+            <form id="login_form" name="login_form" class="form-vertical" action="index" method="post" />
+				<p align="left">欢迎使用错误码管理系统.</p>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-user"></i></span><input type="text" id="uname" name="uname" placeholder="Username" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="upwd" name="upwd" placeholder="Password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <span class="pull-left"></span>
+                    <span class="pull-right"><input type="submit" class="btn btn-inverse" value="Login" /></span>
+                </div>
+            </form>
+        </div>
+
+        #* 提示框 *#
+        <div id="modal" class="modal hide fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"> [Close]</span></button>
+                        <h5 class="modal-title"><i class="fa fa-exclamation-circle"></i> [Title]</h5>
+                    </div>
+                    <div class="modal-body small">
+                        <p>[Message]</p>
+                    </div>
+                    <div class="modal-footer" >
+                        <button type="button" class="btn btn-primary ok" data-dismiss="modal">[BtnOk]</button>
+                        <button type="button" class="btn btn-default cancel" data-dismiss="modal">[BtnCancel]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

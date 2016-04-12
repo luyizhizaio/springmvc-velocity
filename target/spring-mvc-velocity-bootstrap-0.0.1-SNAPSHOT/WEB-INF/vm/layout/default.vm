@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FINDAWAY管理系统</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="http://www.360buy.com/favicon.ico" rel="shortcut icon">
+
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/bootstrap-responsive.min.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/select2.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/unicorn.main.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/css/unicorn.grey.css" class="skin-color" />
+
+    <script type="text/javascript" src="/static/scripts/bootstrap/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/jquery.ui.custom.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/select2.min.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/jquery.validate.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/unicorn.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/ec.modal.page.js"></script>
+    <script type="text/javascript" src="/static/scripts/bootstrap/ec.add.page.js"></script>
+</head>
+<body>
+
+    #* 头部logo *#
+    <div id="header">
+        <h1><a href="/ec/list">FINDAWAY System</a></h1>
+    </div>
+
+    #* 头部功能区 *#
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav btn-group">
+            <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">Profile</span></a></li>
+            <li class="btn btn-inverse"><a title="" href="/login/logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+        </ul>
+    </div>
+
+    #* 左侧菜单栏 *#
+    <div id="sidebar">
+        <a href="#" class="visible-phone"><i class="icon icon-home"></i> 错误码系统</a>
+        <ul>
+            <li class="active">
+                <a href="/ec/list"><i class="icon icon-home"></i> <span>错误码管理</span></a>
+            </li>
+            <li>
+                <a href="/group/list"><i class="icon icon-user"></i> <span>分组管理</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="icon icon-cog"></i> <span>系统设置</span></a>
+            </li>
+        </ul>
+    </div>
+
+    #* 右侧主区 *#
+    <div id="content">
+        #* 页面标题及功能区 *#
+        <div id="content-header">
+            <h1>添加错误码</h1>
+            <div class="btn-group">
+                <a class="btn btn-large tip-bottom" title="刷 新"><i class="icon-refresh"></i></a>
+                <a href="/group/add" class="btn btn-large tip-bottom" title="添加分组"><i class="icon-plus-sign"></i></a>
+                <a href="/ec/add" class="btn btn-large tip-bottom" title="添加错误码"><i class="icon-plus"></i></a>
+                <a href="/ec/list" class="btn btn-large tip-bottom" title="错误码列表"><i class="icon-th-list"></i><span
+                        class="label label-important">${length}</span></a>
+            </div>
+        </div>
+
+        #* 面包屑 *#
+        <div id="breadcrumb">
+            <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+            <a href="#" class="current">添加错误码</a>
+        </div>
+
+        #* 表单 *#
+        <div id="main" class="container-fluid" >
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget-box">
+                        <div class="widget-title">
+                                <span class="icon">
+                                    <i class="icon-align-justify"></i>
+                                </span>
+                            <h5></h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <form class="form-horizontal" method="post" action="#" name="add_form" id="add_form" novalidate="novalidate" />
+                            <div class="control-group">
+                                <label class="control-label">组</label>
+                                <div class="controls">
+                                    <select id="path" name="path">
+                                        #foreach($data in $group)
+                                            <option value="$data.path">$data.name</option>
+                                        #end
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">错误码</label>
+                                <div class="controls">
+                                    <input id="code" name="code" type="text" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">错误码描述</label>
+                                <div class="controls">
+                                    <input id="msg" name="msg" type="text" placeholder="请输入该错误码信息的描述" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">前台提示</label>
+                                <div class="controls">
+                                    <input id="errorMessage" name="errorMessage" type="text" placeholder="请输入该错误码信息的显示" />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button id="generateAndSaveBtn" type="submit" class="btn btn-primary">生成并保存</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            #* 撑页面 *#
+            <div id="autoHeight" class="row-fluid">
+            </div>
+
+            #* 页底 *#
+            <div class="row-fluid">
+                <div id="footer" class="span12">
+                    Copyright &copy; 2015 FINDAWAY 版权所有
+                </div>
+            </div>
+
+            #* 提示框 *#
+            <div id="modal" class="modal hide fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only"> [Close]</span></button>
+                            <h5 class="modal-title"><i class="fa fa-exclamation-circle"></i> [Title]</h5>
+                        </div>
+                        <div class="modal-body small">
+                            <p>[Message]</p>
+                        </div>
+                        <div class="modal-footer" >
+                            <button type="button" class="btn btn-primary ok" data-dismiss="modal">[BtnOk]</button>
+                            <button type="button" class="btn btn-default cancel" data-dismiss="modal">[BtnCancel]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

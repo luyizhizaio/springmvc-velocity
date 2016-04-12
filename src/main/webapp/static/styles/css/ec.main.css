@@ -1,0 +1,27 @@
+.page-button {
+    float:left;
+    margin:0 0 0 35%;
+}
+
+.page-label {
+    display: table-cell;
+    height: 26px;
+    line-height: 26px;
+    margin: 0px;
+    text-align: left;
+    vertical-align: middle;
+    *position: relative;
+}
+
+.page-label span {
+    *position: absolute;
+    *top: 50%;
+}
+
+.page-label select {
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    *position: relative;
+    *top: -50%;
+}
